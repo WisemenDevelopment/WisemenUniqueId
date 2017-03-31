@@ -42,7 +42,11 @@
         
         <header-file src="platforms/ios/Custom_Keychain/Classes/KeychainItemWrapper.h" />
         
-        <source-file src="platforms/ios/Custom_Keychain/Classes/KeychainItemWrapper.m" />
+        <source-file src="platforms/ios/Custom_Keychain/Classes/KeychainItemWrapper.m" compiler-flags="-fno-objc-arc" />
+        
+          
+      
+  <framework src="Security.framework" />
         
     </platform>
     
