@@ -10,7 +10,7 @@
 - (NSMutableDictionary *)secItemFormatToDictionary:(NSDictionary *)dictionaryToConvert;
 - (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert;
 
-// /Updates the item in the keychain, or adds it if it doesn't exist.
+/// /Updates the item in the keychain, or adds it if it doesn't exist.
 - (void)writeToKeychain;
 
 @end
