@@ -6,7 +6,7 @@
 @interface KeychainItemWrapper : NSObject
 {
     NSMutableDictionary *keychainItemData;		//// /The actual keychain item data backing store.
-    NSMutableDictionary *genericPasswordQuery;	// A placeholder for the generic keychain item query used to locate the item.
+    NSMutableDictionary *genericPasswordQuery;	// /A placeholder for the generic keychain item query used to locate the item.
 }
 
 @property (nonatomic, retain) NSMutableDictionary *keychainItemData;
