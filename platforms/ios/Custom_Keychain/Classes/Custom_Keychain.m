@@ -53,21 +53,35 @@
      KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:Appstr accessGroup:nil];
     NSString *_ID = [keychainItem objectForKey:kSecValueData];
     
+     NSString *res = @"fail";
+    if(_ID.length > 0)
+    {
+        res = _ID ;
+    }
+
+    
     
     
  //   NSString *TOKEN = [[NSUserDefaults standardUserDefaults] stringForKey:@"_Device_token"];
     
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:_ID];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
     [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
+
+ 
 }
 - (void)_SET_DETAILS:(CDVInvokedUrlCommand*)command
 {
+      self.callbackId = command.callbackId;
+
+     
     NSString *Appstr = [command.arguments objectAtIndex:0];
     
      NSString *str1 = [command.arguments objectAtIndex:1];
      NSString *str2 = [command.arguments objectAtIndex:2];
-    NSString *_Random_string = [self generateRandomString:9];
-     NSString   *_sbuffer = @"";
+    NSString *_Random_string = [self generateRandomString:7];
+  NSString   *_sbuffer = @"";
+    _sbuffer = [_sbuffer stringByAppendingString:Appstr];
+    _sbuffer = [_sbuffer stringByAppendingString:@"_"];
     _sbuffer = [_sbuffer stringByAppendingString:str1];
    _sbuffer = [_sbuffer stringByAppendingString:@"_"];
    _sbuffer = [_sbuffer stringByAppendingString:_Random_string];
@@ -84,6 +98,20 @@
      KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:Appstr accessGroup:nil];
      [keychainItem setObject:str1 forKey:(id)kSecAttrAccount];
    [keychainItem setObject:Unique_Device_Id forKey:(id)kSecValueData];
+       NSString *_ID = [keychainItem objectForKey:kSecValueData];
+    
+    NSString *res = @"fail";
+ 
+    if(_ID.length > 0)
+    {
+        res = _ID ;
+    }
+
+    
+   
+    
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
     
   // [keychainItem setObject:@"fgfdhgsfdh" forKey:kSecValueData];
     
